@@ -26,34 +26,26 @@ class Solution:
 
 def judge(fn):
     tests = [
-        (
-            {
-                "nums": [2, 7, 11, 15],
-                "target": 9,
-            },
-            [0, 1]
-        ),
-        (
-            {
-                "nums": [3, 2, 4],
-                "target": 6,
-            },
-            [1, 2]
-        ),
-        (
-            {
-                "nums": [3, 3],
-                "target": 6,
-            },
-            [0, 1]
-        ),
+        {
+            "nums": [2, 7, 11, 15],
+            "target": 9,
+            "expected": [0, 1]
+        },
+        {
+            "nums": [3, 2, 4],
+            "target": 6,
+            "expected": [1, 2]
+        },
+        {
+            "nums": [3, 3],
+            "target": 6,
+            "expected": [0, 1]
+        },
     ]
     print(fn.__name__)
     for t in tests:
-        print(t[0])
-        print(t[1])
-        print()
-        assert set(fn(**t[0])) == set(t[1])
+        print(t)
+        assert set(t.pop("expected")) == set(fn(**t))
 
 if __name__ == "__main__":
     judge(Solution().twoSum)
